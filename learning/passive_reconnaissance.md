@@ -2,11 +2,12 @@
 
 Gather information never directly attacking the target, only using public registers and OSINT instruments.
 
-🧰 1. Gli strumenti per imparare in autonomia
+## learn how to use codes
 
-Per non impazzire con i manuali enciclopedici (man), hai scoperto tre scorciatoie fondamentali per capire la logica dei comandi al volo:
-• L'opzione --help o -h: Mostra una guida rapida con le opzioni principali direttamente nel terminale.
-	• Sintassi: nome_comando --help (es. jq --help)
+Alternatives to man:
+
+- --help or -help, shows instructions directly in the terminal.
+	- '''command_name --help'''
 • tldr: Il bignami della community che sostituisce il manuale con i 5 esempi pratici più usati dagli umani.
 	• Sintassi: tldr nome_comando (es. tldr jq)
 • cheat.sh: Un cheat sheet online consultabile via terminale senza installare nulla.
