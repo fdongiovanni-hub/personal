@@ -55,3 +55,15 @@ When you interact with a software application, it communicates using standard La
 - Domain Resolution: The operating system uses DNS to look up the IP address associated with a human-readable domain name.
 - Email Handling: Mail clients use SMTP to send messages and IMAP or POP3 to retrieve them from servers.
 - File Management: Programs use FTP or SFTP to move files securely across remote systems.
+
+## TCP/IP model
+- Application Layer: The OSI model application, presentation and session layers, i.e., layers 5, 6, and 7, are grouped into the application layer in the TCP/IP model.
+- Transport Layer: This is layer 4.
+- Internet Layer: This is layer 3. The OSI model’s network layer is called the Internet layer in the TCP/IP model.
+- Link Layer: This is layer 2.
+
+## IP Addresses
+IP addresses are categorized as either public or private. Private addresses cannot directly access or be reached by the public internet. For a private device to browse the internet, a router equipped with a public IP must perform Network Address Translation (NAT). RFC 1918 defines three specific private address ranges that should be memorized:
+• 10.0.0.0 - 10.255.255.255 (10/8)
+• 172.16.0.0 - 172.31.255.255 (172.16/12)
+• 192.168.0.0 - 192.168.255.255 (192.168/16)
