@@ -62,8 +62,27 @@ When you interact with a software application, it communicates using standard La
 - Internet Layer: This is layer 3. The OSI model’s network layer is called the Internet layer in the TCP/IP model.
 - Link Layer: This is layer 2.
 
+## Incapsulation
+- Application data: It all starts when the user inputs the data they want to send into the application. For example, you write an email or an instant message and hit the send button. The application formats this data and starts sending it according to the application protocol used, using the layer below it, the transport layer.
+- Transport protocol segment or datagram: The transport layer, such as TCP or UDP, adds the proper header information and creates the TCP segment (or UDP datagram). This segment is sent to the layer below it, the network layer.
+- Network packet: The network layer, i.e. the Internet layer, adds an IP header to the received TCP segment or UDP datagram. Then, this IP packet is sent to the layer below it, the data link layer.
+- Data link frame: The Ethernet or WiFi receives the IP packet and adds the proper header and trailer, creating a frame.
+
 ## IP Addresses
 IP addresses are categorized as either public or private. Private addresses cannot directly access or be reached by the public internet. For a private device to browse the internet, a router equipped with a public IP must perform Network Address Translation (NAT). RFC 1918 defines three specific private address ranges that should be memorized:
 • 10.0.0.0 - 10.255.255.255 (10/8)
 • 172.16.0.0 - 172.31.255.255 (172.16/12)
 • 192.168.0.0 - 192.168.255.255 (192.168/16)
+
+
+## Interaction with Network Services: Telnet & Banner Grabbing
+
+TELNET is a legacy protocol used to open plain, unencrypted TCP connections to specific service ports. While replaced by SSH for secure administration, it remains highly efficient for diagnostics and **Banner Grabbing** (discovering specific service names and version numbers, such as `lighttpd/1.4.63`, to look up known vulnerabilities).
+
+### Laboratory Services Summary
+- **Echo (Port 7):** A simple diagnostic server that returns any sent text back to the client.
+- **Daytime (Port 13):** Instantly replies with the current system date/time and drops the connection.
+- **Web HTTP (Port 80):** Serves web application traffic. Interacting with it requires manual HTTP/1.1 request formatting at the Application Layer (e.g., typing `GET / HTTP/1.1` followed by a custom `Host:` header).
+
+### Command Tool Comparison
+While **Telnet** and **Netcat (`nc`)** open a raw, manual connection tube where you must type the raw HTTP protocol lines by hand before the timeout triggers, **`curl`** acts as an automated utility that handles the protocol formatting instantly in the background to fetch the web page content directly.
