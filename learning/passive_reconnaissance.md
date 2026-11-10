@@ -6,22 +6,23 @@ Gather information never directly attacking the target, only using public regist
 
 Alternatives to man:
 
-- --help or -help, shows instructions directly in the terminal.
-	- '''command_name --help'''
-• tldr: Il bignami della community che sostituisce il manuale con i 5 esempi pratici più usati dagli umani.
-	• Sintassi: tldr nome_comando (es. tldr jq)
-• cheat.sh: Un cheat sheet online consultabile via terminale senza installare nulla.
-	• Sintassi: curl cheat.sh/nome_comando (es. curl cheat.sh/jq)
+- --help or -help: shows instructions directly in the terminal.
+	- ```command_name --help```
+- tldr: community-made, shows the 5 most used commands.
+	- ```tld command_name```
+- cheat.sh: cheat sheet online to consult without installation.
+	- ```curl cheat.sh/command_name```
 
-🌐 2. Comandi di Rete e Ricerca DNS
+## Network and DNS research commands
 
-Il DNS è l'elenco telefonico di internet. Hai imparato a interrogarlo per mappare l'infrastruttura di un obiettivo:
 
-Tipo Record	Cosa contiene?	Utilità per l'Hacker / Difensore
-A	Indirizzo IPv4 (i numeri del server)	Trovare la macchina fisica su cui gira il sito.
-AAAA	Indirizzo IPv6 (versione moderna dell'IP)	Stessa utilità dell'IP, ma per reti moderne.
-MX	Server di gestione delle Email	Capire la piattaforma usata (es. se vedi outlook.com sai che usano Office 365, ottimo per il phishing).
-TXT	Testo libero (note e configurazioni)	Spesso usato nei laboratori per nascondere le Flag segrete.
+| Record Type | What it Contains | Hacker / Defender Utility |
+| :--- | :--- | :--- |
+| **A** | IPv4 Address (the server's numbers) | Finding the physical machine hosting the website. |
+| **AAAA** | IPv6 Address (modern version of IP) | Same utility as the A record, but targeting modern networks. |
+| **MX** | Email Management Servers | Identifying the email platform used (e.g., seeing outlook.com reveals Office 365 usage, which is perfect for phishing targeting). |
+| **TXT** | Free Text (notes and configurations) | Often used in CTF challenges/labs to hide secret Flags. |
+
 
 
 Sintassi dei comandi DNS:
