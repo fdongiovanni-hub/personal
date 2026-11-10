@@ -8,7 +8,7 @@ physical connection between devices; this includes the medium, such as a wire, a
 
 ### Layer 2: Data Link Layer
 
-represents the protocol that enables data transfer between nodes on the same network segment.
+represents the protocol that enables data transfer between nodes on the same network segment. (MAC addresses)
 
 ### Layer 3: Network Layer
 is concerned with sending data between different networks. In more technical terms, the network layer handles logical addressing and routing, i.e., finding a path to transfer the network packets between the diverse networks.
@@ -18,3 +18,40 @@ Examples of the network layer include Internet Protocol (IP), Internet Control M
 When your home router receives the packet from your computer, it strips off your local LAN's Layer 2 header (destroying the trace of your computer's MAC address). It looks at the Destination IP (Layer 3), realizes the packet is bound for the internet, and prepares to send it out of its WAN (external) port.
 - FTTH / Ethernet Connections: If your ISP provides a direct Ethernet handoff (common with some fiber setups), a standard Ethernet header is used. The Source MAC becomes your router's WAN port, and the Destination MAC becomes the ISP's router interface.
 - PPPoE / DSL Connections: If your connection uses PPPoE (Point-to-Point Protocol over Ethernet), it creates a direct Layer 2 virtual tunnel between your router and the ISP's Broadband Remote Access Server (BRAS). Inside this tunnel, standard MAC-to-MAC routing isn't used to find the path; the session ID handles the delivery.
+
+### Layer 4: Transport Layer
+Layer 4 doesn't care how a packet travels across the city. Its only job is to deliver data directly to a specific program running on your computer (like your browser, Discord, or a game) and decide how that data should be behaved.
+
+Uses ports:
+- Your web browser connects using Port 80 (HTTP) or 443 (HTTPS).
+- Your SSH terminal connects using Port 22.
+
+Two ways to move data:
+- TCP (reliable): Establishes a connection first (3-way handshake). Checks if every single piece arrives safely.
+- UDP (fast): fires the data into the network. Doesn't check if it arrives.
+
+- Segmentation (Chopping data): You cannot send a 4GB movie over the network in one massive block. Layer 4 chops that movie into tiny, manageable pieces (segments). On the receiving end, Layer 4 puts them back together in the correct order.
+- Flow Control (Speed matching): If a powerful server sends data faster than a device can process it, Layer 4 on that device tells the server to slow down. This prevents the device from dropping packets due to overload.
+
+### Layer 5: Session Layer
+
+The Transport Layer (Layer 4) is only responsible for moving raw data segments from one device to another. It does not understand the concept of an ongoing conversation. Layer 5 fixes this by creating and managing a formal session between the two applications.
+When you log into a service, Layer 5 negotiates the rules of the communication, coordinates which side speaks first, and maintains the connection open. Its most critical function is data synchronization through checkpoints. If a large 10GB file transfer fails at 7GB due to a temporary network drop, Layer 5 relies on these internal markers to resume the transfer from the last valid checkpoint, preventing the application from restarting the entire process from scratch.
+
+### Layer 6: Presentation Layer
+
+Computers do not all store or process data the same way. A Linux server, a Windows PC, and a Mac might use different internal architectures. Layer 6 acts as a universal translator, formatting the raw data syntax so that both the network and the application can understand it.
+This layer handles three major processes:
+- Data Encoding: It translates raw bits into standardized formats. For text, it uses character sets like ASCII or UTF-8. For images and multimedia, it defines structures like JPEG, PNG, or MP4. In email systems, it utilizes MIME to translate complex binary files (like PDF attachments) into 7-bit ASCII text so they can travel across legacy mail systems safely.
+- Compression: It shrinks the data size before transmission to optimize bandwidth, which is then decompressed on the receiving side.
+- Encryption: It processes cryptographic functions to secure the data structure before passing it down the stack.
+
+
+### Layer 7: Application Layer
+
+The Application Layer is the top layer of the OSI model and acts as the interface between the human user and the network stack. It is important to note that Layer 7 is not the software application itself (like Google Chrome or Outlook), but rather the specific network protocols that those software programs call upon to perform operations.
+When you interact with a software application, it communicates using standard Layer 7 protocols designed for precise tasks:
+- Web Browsing: The browser calls HTTP or HTTPS to request and structure web page content.
+- Domain Resolution: The operating system uses DNS to look up the IP address associated with a human-readable domain name.
+- Email Handling: Mail clients use SMTP to send messages and IMAP or POP3 to retrieve them from servers.
+- File Management: Programs use FTP or SFTP to move files securely across remote systems.
