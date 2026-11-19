@@ -1,3 +1,4 @@
+# Active reconnaissance
 ## Web Browser
 TCP port 80 is the default for plain HTTP, but ususally websites automatically redirect to HTTPS (TCP port 443). Modern sites also support HTTP/3 (QUIC protocol, UDP port 443).
 
@@ -76,3 +77,12 @@ Connecting to an SMTP server on port 25 produces a banner identifying the mail s
 
 ```nc -vnlp 1234```
 start listening on port 1234
+
+## NMAP
+Network Mapper: automated network scanner designed to map entire networks in seconds, discovering active hosts, open ports, and exact software versions running.
+
+```sudo nmap -sC -sV -oN scan.txt 10.114.162.28```
+
+- -sC: Runs safe, default NSE scripts to gather extra information about discovered services
+- -sV: Probes open ports to determine the exact service and version numbers.
+- -oN scan.txt: Saves the output to a text file
