@@ -86,3 +86,10 @@ Network Mapper: automated network scanner designed to map entire networks in sec
 - -sC: Runs safe, default NSE scripts to gather extra information about discovered services
 - -sV: Probes open ports to determine the exact service and version numbers.
 - -oN scan.txt: Saves the output to a text file
+
+## GoBuster
+fast command-line brute-forcing tool used to discover hidden directories, files, and subdomains on a web server
+```gobuster dir -u http://10.114.136.102 -w /usr/share/wordlists/dirb/common.txt```
+- dir: Tells Gobuster to run in directory/file enumeration mode (as opposed to dns mode for subdomains).
+- -u http://10.114.136.102: target URL
+- -w /usr/share/wordlists/dirb/common.txt: Points to the wordlist
